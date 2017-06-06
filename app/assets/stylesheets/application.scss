@@ -1,4 +1,10 @@
+/*
+ *= require_self
+ *= require_tree .
+*/
 @import 'ionicons';
+@import "bootstrap";
+
 
 .full-page {
   font-family: "Comic Sans MS"
@@ -19,12 +25,16 @@
   padding: 0px;
   text-align: center;
   position: relative;
-  bottom: 30px;
+  bottom: 20px;
 }
 
-.arrows {
+.nav-links{
+  display: inline;
+}
+
+.icons {
   color: "white";
   border-color: "black";
-  display: inline-block;
 
+  padding: 5px;
 }
