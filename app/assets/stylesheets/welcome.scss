@@ -1,3 +1,5 @@
+@import "bootstrap";
+
 .welcome-header{
   text-align: center;
   padding-bottom: 40px;
@@ -8,5 +10,10 @@
   border-width: 2px;
   padding-top: 20px;
   padding-bottom: 20px;
+  width: 50%;
   text-align: center;
+}
+
+.pull-right {
+  text-align: right;
 }
