@@ -59,6 +59,9 @@ bower.json
 # Ignore pow environment settings
 .powenv
 
+# Ignore application configuration
+/config/application.yml
+
 # Ignore Byebug command history file.
 .byebug_history
 >>>>>>> 6f8be10458b6f39545f25f95dc5801bd80e001c6
