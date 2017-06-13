@@ -35,6 +35,17 @@
 .icons {
   color: "white";
   border-color: "black";
-
   padding: 5px;
+}
+
+.search-field{
+  position: absolute;
+  left: 80%;
+}
+
+.url-field{
+  display: inline-block;
+  position:absolute;
+  width: 25%;
+  left: 35%;
 }
