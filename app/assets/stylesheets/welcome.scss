@@ -17,3 +17,14 @@
 .pull-right {
   text-align: right;
 }
+
+.columns{
+  -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+    width: 50%;
+    text-align: center;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 3%;
+}
