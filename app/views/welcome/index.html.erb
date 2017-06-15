@@ -17,7 +17,7 @@
         <button type="button">Browse Public Wikis</button>
       <% end %>
       <% else %>
-        <%= link_to "Sign Up", new_user_registration_path %>
+        <button type="button" class="sign-up"><%=link_to "Sign Up", new_user_registration_path%></button>
       <% end %>
   </div>
   <div class="columns">
