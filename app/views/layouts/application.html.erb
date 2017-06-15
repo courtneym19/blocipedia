@@ -15,7 +15,7 @@
           <a href="#" onclick="history.go(-1)"><i class="ion-arrow-left-a arrow"></i></a>
           <a href="#" onclick="history.go(1)"><i class="ion-arrow-right-a arrow"></i></a>
           <a href="#" onclick="window.stop()"><i class="ion-close-round close"></i></a>
-          <a href="#"><i class="ion-home home"></i></a>
+          <%= link_to root_path do %><i class="ion-home home"></i><% end %>
           <input type="text" class="url-field" placeholder="http://blocipedia.com">
           <input type="text" class="search-field" placeholder="Search Blocipedia...">
         </div>
