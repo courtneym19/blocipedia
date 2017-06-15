@@ -26,5 +26,6 @@ class WikisController < ApplicationController
    end
 
   def edit
+    @wiki = Wiki.find(params[:id])
   end
 end

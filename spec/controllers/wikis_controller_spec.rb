@@ -54,7 +54,7 @@ end
 
   describe "GET #show" do
     it "returns http success" do
-      get :show
+      get :show, {id: my_wiki.id}
       expect(response).to have_http_status(:success)
     end
 
@@ -69,13 +69,28 @@ end
      end
   end
 
-=begin
+
   describe "GET #edit" do
     it "returns http success" do
-      get :edit
+      get :edit, {id: my_wiki.id}
       expect(response).to have_http_status(:success)
     end
+
+    it "renders the #edit view" do
+       get :edit, {id: my_wiki.id}
+       expect(response).to render_template :edit
+     end
+
+     it "assigns wiki to be updated to @wiki" do
+       get :edit, {id: my_wiki.id}
+
+       wiki_instance = assigns(:wiki)
+
+       expect(wiki_instance.id).to eq my_wiki.id
+       expect(wiki_instance.title).to eq my_wiki.title
+       expect(wiki_instance.body).to eq my_wiki.body
+     end
   end
-=end
+
 
 end
