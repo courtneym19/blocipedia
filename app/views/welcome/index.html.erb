@@ -12,12 +12,20 @@
 
   <div class="container">
     <h4>Create and share Markdown Wikis</h4>
-     <button type="button" class="sign-up"><%=link_to "Sign Up", new_user_registration_path%></button>
+    <% if user_signed_in? %>
+      <%= link_to wikis_path do %>
+        <button type="button">Browse Public Wikis</button>
+      <% end %>
+      <% else %>
+        <%= link_to "Sign Up", new_user_registration_path %>
+      <% end %>
   </div>
   <div class="columns">
     <div class="column-one">
       <h5>Create as many public wikis as you want!</h5>
-      <button type="button" class="free-plan">Free plan</button>
+      <%= link_to wikis_path do %>
+        <button type="button" class="free-plan">Free plan</button>
+      <% end %>
     </div>
     <div class="column-two">
       <h5>Create private wikis!</h5>
