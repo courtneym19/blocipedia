@@ -92,5 +92,41 @@ end
      end
   end
 
+  describe "PUT update" do
+     it "updates wiki with expected attributes" do
+       new_title = RandomData.random_sentence
+       new_body = RandomData.random_paragraph
+       new_private = false
 
+       put :update, id: my_wiki.id, wiki: {title: new_title, body: new_body, private: new_private}
+
+       updated_wiki = assigns(:wiki)
+       expect(updated_wiki.id).to eq my_wiki.id
+       expect(updated_wiki.title).to eq new_title
+       expect(updated_wiki.body).to eq new_body
+       expect(updated_wiki.private).to eq new_private
+     end
+
+     it "redirects to the updated wiki" do
+       new_title = RandomData.random_sentence
+       new_body = RandomData.random_paragraph
+       new_private = false
+
+       put :update, id: my_wiki.id, wiki: {title: new_title, body: new_body, private: new_private}
+       expect(response).to redirect_to my_wiki
+     end
+   end
+
+   describe "DELETE destroy" do
+     it "deletes the wiki" do
+       delete :destroy, {id: my_wiki.id}
+       count = Wiki.where({id: my_wiki.id}).size
+       expect(count).to eq 0
+     end
+
+     it "redirects to wikis index" do
+       delete :destroy, {id: my_wiki.id}
+       expect(response).to redirect_to wikis_path
+     end
+   end
 end
