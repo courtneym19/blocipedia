@@ -18,12 +18,11 @@ class ChargesController < ApplicationController
       :currency    => 'usd'
     )
 
-    if charge
-      current_user.premium!
-    end
+    current_user.premium!
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path
   end
+
 end
