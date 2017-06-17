@@ -6,7 +6,4 @@ class WikiPolicy < ApplicationPolicy
     @wiki = wiki
   end
 
-  def update?
-    user.admin? or not wiki.published?
-  end
 end

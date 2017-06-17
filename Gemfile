@@ -24,6 +24,7 @@ source 'https://rubygems.org'
  gem 'ionicons-rails'
  gem 'bootstrap-sass'
  gem "pundit"
+ gem 'stripe'
 
  group :development, :test do
    gem 'byebug'

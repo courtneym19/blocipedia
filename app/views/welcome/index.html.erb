@@ -23,13 +23,27 @@
   <div class="columns">
     <div class="column-one">
       <h5>Create as many public wikis as you want!</h5>
-      <%= link_to wikis_path do %>
-        <button type="button" class="free-plan">Free plan</button>
+      <% if user_signed_in? %>
+        <%= link_to wikis_path do %>
+          <button type="button" class="free-plan">Free plan</button>
+        <% end %>
+      <% else %>
+        <%= link_to new_user_registration_path do %>
+          <button type="button" class="free-plan">Free plan</button>
+        <% end %>
       <% end %>
     </div>
     <div class="column-two">
       <h5>Create private wikis!</h5>
-      <button type="button" class="premium-plan">Premium plan</button>
+      <% if current_user.role == "premium" %>
+        <%= link_to private_wikis_index_path do %>
+          <button type="button" class="premium-plan">Private Wikis</button>
+        <% end %>
+      <% else %>
+        <%= link_to new_charge_path do %>
+          <button type="button" class="premium-plan">Premium plan</button>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

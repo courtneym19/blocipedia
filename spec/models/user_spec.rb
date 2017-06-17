@@ -7,6 +7,9 @@ RSpec.describe User, type: :model do
     sign_in user
   end
 
+  should have_many(:assignments)
+  should have_many(:roles).through(:assignments)
+
   describe "attributes" do
      it "responds to role" do
        expect(user).to respond_to(:role)
