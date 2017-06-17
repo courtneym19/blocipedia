@@ -1,23 +1,51 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "password") }
 
-  describe "after_create" do
- # #22
-     before do
-       @another_comment = Comment.new(body: 'Comment Body', post: post, user: user)
+  describe "attributes" do
+     it "responds to role" do
+       expect(user).to respond_to(:role)
      end
 
- # #23
-     it "sends an email to users who have just signed up for an account" do
-       expect(UserMailer).to receive(:new_user).with(user).and_return(double(deliver_now: true))
-
+     it "responds to admin?" do
+       expect(user).to respond_to(:admin?)
      end
 
- # #24
-     it "does not send emails to non-members" do
-       expect(UserMailer).not_to receive(:new_comment)
- 
+     it "responds to standard?" do
+       expect(user).to respond_to(:standard?)
      end
+   end
+
+   describe "roles" do
+     it "is standard by default" do
+       expect(user.role).to eq("standard")
+     end
+
+     context "standard user" do
+       it "returns true for #standard?" do
+         expect(user.standard?).to be_truthy
+       end
+
+       it "returns false for #admin?" do
+         expect(user.admin?).to be_falsey
+       end
+     end
+
+     context "admin user" do
+       before do
+         user.admin!
+       end
+
+       it "returns false for #standard?" do
+         expect(user.standard?).to be_falsey
+       end
+
+       it "returns true for #admin?" do
+         expect(user.admin?).to be_truthy
+       end
+     end
+
+
    end
 end

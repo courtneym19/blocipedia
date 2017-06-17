@@ -23,6 +23,7 @@ source 'https://rubygems.org'
  gem 'devise'
  gem 'ionicons-rails'
  gem 'bootstrap-sass'
+ gem "pundit"
 
  group :development, :test do
    gem 'byebug'

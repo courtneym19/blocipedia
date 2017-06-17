@@ -1,4 +1,6 @@
 class WikisController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @wikis = Wiki.all
   end
@@ -54,4 +56,6 @@ class WikisController < ApplicationController
        render :show
      end
    end
+
+
 end
