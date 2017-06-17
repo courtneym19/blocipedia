@@ -18,7 +18,9 @@ class ChargesController < ApplicationController
       :currency    => 'usd'
     )
 
-    current_user.upgrade
+    if charge
+      current_user.premium!
+    end
 
   rescue Stripe::CardError => e
     flash[:error] = e.message

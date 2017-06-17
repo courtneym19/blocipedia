@@ -14,10 +14,10 @@ require 'random_data'
 
    # Create a premium user
   premium = User.create!(
-  password: "password",
-  password_confirmation:  "password"
-  role:     'premium'
-)
+    password: "password",
+    password_confirmation:  "password"
+    role:  'premium'
+  )
 
 
 

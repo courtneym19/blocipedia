@@ -35,7 +35,7 @@
     </div>
     <div class="column-two">
       <h5>Create private wikis!</h5>
-      <% if current_user.role == "premium" %>
+      <% if current_user.premium? %>
         <%= link_to private_wikis_index_path do %>
           <button type="button" class="premium-plan">Private Wikis</button>
         <% end %>
