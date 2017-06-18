@@ -37,7 +37,7 @@
       <h5>Create private wikis!</h5>
       <% if user_signed_in? %>
         <% if current_user.role == 'premium' %>
-          <%= link_to private_wikis_index_path do %>
+          <%= link_to private_wikis_path do %>
             <button type="button" class="premium-plan">Private Wikis</button>
           <% end %>
         <% else %>

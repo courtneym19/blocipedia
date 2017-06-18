@@ -1,10 +1,11 @@
 class ChargesController < ApplicationController
   def new
+
   end
 
   def create
     # Amount in cents
-    @amount = 100
+    @amount = 1000
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
@@ -25,4 +26,9 @@ class ChargesController < ApplicationController
     redirect_to new_charge_path
   end
 
+  def downgrade
+    current_user.standard!
+    flash[:success] = "Come back anytime."
+    redirect_to root_path
+  end
 end
