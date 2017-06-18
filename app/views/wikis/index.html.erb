@@ -1,5 +1,10 @@
 <h1>Public Wikis</h1>
 
+<%= link_to new_wiki_path do %>
+  <button type="button" class="btn btn-success" id="new">New Wiki</button>
+<% end %>
+
+
 <% @wikis.each do |wiki| %>
   <p><%= link_to wiki.title, wiki %></p>
 <% end %>

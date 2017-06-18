@@ -1,7 +1,14 @@
 // Place all the styles related to the Wikis controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "Bootstrap";
+
 
 h1, p {
   margin-left: 10px;
+}
+
+#new {
+  float: right !important;
+  margin-right: 25px;
 }
