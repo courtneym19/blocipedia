@@ -28,7 +28,8 @@ class ChargesController < ApplicationController
 
   def downgrade
     current_user.standard!
-    flash[:success] = "Come back anytime."
     redirect_to root_path
+    flash[:notice] = "Your account has been downgraded. You can sign up for a new premium account anytime."
+
   end
 end
