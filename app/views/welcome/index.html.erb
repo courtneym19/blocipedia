@@ -14,7 +14,7 @@
     <h4>Create and share Markdown Wikis</h4>
     <% if user_signed_in? %>
       <%= link_to wikis_path do %>
-        <button type="button">Browse Public Wikis</button>
+        <button type="button">Browse Wikis</button>
       <% end %>
       <% else %>
         <button type="button" class="sign-up"><%=link_to "Sign Up", new_user_registration_path%></button>
@@ -37,7 +37,7 @@
       <h5>Create private wikis!</h5>
       <% if user_signed_in? %>
         <% if current_user.role == 'premium' %>
-          <%= link_to private_wikis_path do %>
+          <%= link_to wikis_path do %>
             <button type="button" class="premium-plan">Private Wikis</button>
           <% end %>
         <% else %>
