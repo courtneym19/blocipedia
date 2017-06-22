@@ -9,7 +9,7 @@ class ChargesController < ApplicationController
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
-      :source  => params[:stripeToken]
+      :source  => params[:stripeToken],
     )
 
     charge = Stripe::Charge.create(
@@ -24,6 +24,10 @@ class ChargesController < ApplicationController
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path
+  end
+
+  def update_resource(resource, params)
+    resource.update_without_password(params)
   end
 
   def downgrade
