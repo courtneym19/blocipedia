@@ -38,7 +38,7 @@
       <% if user_signed_in? %>
         <% if current_user.role == 'premium' %>
           <%= link_to wikis_path do %>
-            <button type="button" class="premium-plan">Private Wikis</button>
+            <button type="button" class="premium-plan">Premium plan</button>
           <% end %>
         <% else %>
           <%= link_to new_charge_path do %>

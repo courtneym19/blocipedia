@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get "downgrade"
   end
 
-  devise_for :users, controllers: { charges: 'charges' }
+  devise_for :users
 
   root 'welcome#index'
 end

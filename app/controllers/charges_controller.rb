@@ -9,7 +9,7 @@ class ChargesController < ApplicationController
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
-      :source  => params[:stripeToken],
+      :source  => params[:stripeToken]
     )
 
     charge = Stripe::Charge.create(
@@ -26,12 +26,15 @@ class ChargesController < ApplicationController
     redirect_to new_charge_path
   end
 
-  def update_resource(resource, params)
-    resource.update_without_password(params)
-  end
+
 
   def downgrade
     current_user.standard!
+
+    current_user.wikis.each do |wiki|
+      wiki.update_attribute(:private, false)
+    end
+
     redirect_to root_path
     flash[:notice] = "Your account has been downgraded. You can sign up for a new premium account anytime."
 
