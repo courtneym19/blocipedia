@@ -25,6 +25,7 @@ source 'https://rubygems.org'
  gem 'bootstrap-sass'
  gem "pundit"
  gem 'stripe'
+ gem 'redcarpet'
 
  group :development, :test do
    gem 'byebug'
