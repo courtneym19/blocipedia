@@ -13,9 +13,6 @@ require 'random_data'
    users = User.all
 
 
-
-
-
   # Create Public Wikis
    50.times do
      Wiki.create!(
@@ -26,18 +23,9 @@ require 'random_data'
 
    wikis = Wiki.all
 
-   # Create Private Wikis
-    50.times do
-      PrivateWiki.create!(
-        title:  Faker::Lorem.sentence,
-        body: Faker::Lorem.paragraph
-      )
-    end
 
-    private_wikis = PrivateWiki.all
 
 
   puts "Seed finished"
   puts "#{User.count} users created"
-  puts "#{Wiki.count} public wikis created"
-  puts "#{PrivateWiki.count} private wikis created"
+  puts "#{Wiki.count} wikis created"
