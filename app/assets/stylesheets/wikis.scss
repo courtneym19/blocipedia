@@ -8,7 +8,16 @@ h1, p {
   margin-left: 10px;
 }
 
+.row {
+  margin-left: 5px;
+}
+
 #new {
   float: right !important;
   margin-right: 25px;
+}
+
+#collab-column {
+  position: relative;
+  margin-top: 0px;
 }

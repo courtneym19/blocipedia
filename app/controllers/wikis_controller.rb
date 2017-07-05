@@ -2,11 +2,12 @@ class WikisController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @wikis = Wiki.all
+    @wikis = policy_scope(Wiki)
   end
 
   def show
     @wiki = Wiki.find(params[:id])
+    @users = Collaborator.all
   end
 
   def new
@@ -19,6 +20,7 @@ class WikisController < ApplicationController
      @wiki.body = params[:wiki][:body]
      @wiki.private = params[:wiki][:private]
      @wiki.user = current_user
+
 
      if @wiki.save
        flash[:notice] = "Wiki was saved."

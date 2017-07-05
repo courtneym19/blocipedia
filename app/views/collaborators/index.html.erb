@@ -1,0 +1,24 @@
+<div class="collab-head">
+  <h4>Manage Collaborators for wiki: <%= @wiki.title %> </h4>
+  <h4>By: <%= @wiki.user.email %> </h4>
+</div>
+
+<div class="row">
+   <div class="col-md-8">
+    <% @users.each do |user| %>
+    <h4 class="media-heading">
+      <%= user.email %>
+      </h4>
+      <% if @wiki.collaborators.include?(user) %>
+        <% collaborator = @wiki.collaborator_for(user) %>
+        <br />
+        <%= link_to "Remove collaborator", [@wiki, collaborator], method: :delete, class: "btn btn-danger" %>
+      <br />
+      <% else %>
+        <%= link_to "Add collaborator", wiki_collaborators_path(@wiki, user_id: user.id), method: :post, class: "btn btn-success" %>
+     <br />
+      <% end %>
+      <br />
+    <% end %>
+  </div>
+</div>

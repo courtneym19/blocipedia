@@ -1,0 +1,7 @@
+
+
+<h4>Add Collaborator</h4>
+  <%= form_for [@wiki, Collaborator.new] do |c| %>
+    <%= email_field_tag 'email', 'email@example.com' %>
+    <%= c.submit "Add collaborator", class: 'btn btn-primary' %>
+  <% end %>
