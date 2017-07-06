@@ -1,16 +1,21 @@
 class CollaboratorsController < ApplicationController
     before_action :find_wiki
 
+    def index
+      @users = User.all
+    end
+
     def new
       @collaborator = Collaborator.new
     end
 
     def create
+      #@user = User.where(email: params[:email]).take
       @collaborator = Collaborator.new(wiki_id: @wiki.id, user_id: params[:user_id])
-
 
       if @collaborator.save
         flash[:notice] = "Collaborator added."
+
       else
         flash[:alert] = "There was an error adding the collaborator."
       end
@@ -21,6 +26,7 @@ class CollaboratorsController < ApplicationController
     def show
       collaborators = Collaborator.where(user_id: @user.id)
       wiki_collabs = Wiki.where(id: collaborators.pluck(:collaborator_id))
+      @user = User.find(params[:user_id])
     end
 
     def destroy
