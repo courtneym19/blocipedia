@@ -7,8 +7,5 @@ class Wiki < ActiveRecord::Base
 
   default_scope { order('updated_at DESC') }
 
-  def collaborator_for(user)
-   collaborators.where(user_id: user.id)
-  end
 
 end

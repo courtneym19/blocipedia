@@ -5,24 +5,8 @@ class WikiPolicy < ApplicationPolicy
     true
   end
 
-  def show?
-    true
-  end
-
-  def new?
-    create?
-  end
-
   def create?
     user.present?
-  end
-
-  def edit?
-    update?
-  end
-
-  def update?
-    user.present? && (user.admin? || user.id == record.user_id || record.collaborators.exists?(user_id: user.id))
   end
 
   def destroy?

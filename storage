@@ -1,0 +1,35 @@
+<h4>Add Collaborator</h4>
+  <%= form_for [@wiki, Collaborator.new] do |c| %>
+    <%= email_field_tag 'email', 'email@example.com' %>
+    <%= c.submit "Add collaborator", class: 'btn btn-primary' %>
+  <% end %>
+
+
+
+  <% @users.each do |user| %>
+  <h4 class="media-heading">
+    <%= user.email %>
+    </h4>
+    <% if @wiki.collaborators.include?(user) %>
+      <% collaborator = @wiki.collaborator_on(user) %>
+      <br />
+      <%= link_to "Remove collaborator", [@wiki, collaborator], method: :delete, class: "btn btn-danger" %>
+    <br />
+    <% else %>
+      <%= link_to "Add collaborator", wiki_collaborators_path(@wiki, user_id: user.id), method: :post, class: "btn btn-success" %>
+   <br />
+    <% end %>
+    <br />
+  <% end %>
+
+
+  <h1>Edit Wiki</h1>
+
+   <div class="row">
+     <div class="col-md-8">
+       <%= render partial: 'form', locals: { wiki: @wiki } %>
+       <% if current_user.admin? || @wiki.user == current_user || @wiki.collaborators.include?(current_user) %>
+         <%= link_to "Manage Collaborators", wiki_collaborators_path(@wiki), class: "btn btn-info" %>
+       <% end %>
+     </div>
+   </div>

@@ -1,13 +1,13 @@
 class CollaboratorsController < ApplicationController
-
     before_action :find_wiki
 
-    def index
-      @users = User.all
+    def new
+      @collaborator = Collaborator.new
     end
 
     def create
-      @collaborator = Collaborator.new(user_id: params[:user_id])
+      @collaborator = Collaborator.new(wiki_id: @wiki.id, user_id: params[:user_id])
+
 
       if @collaborator.save
         flash[:notice] = "Collaborator added."
@@ -16,6 +16,11 @@ class CollaboratorsController < ApplicationController
       end
 
     	redirect_to @wiki
+    end
+
+    def show
+      collaborators = Collaborator.where(user_id: @user.id)
+      wiki_collabs = Wiki.where(id: collaborators.pluck(:collaborator_id))
     end
 
     def destroy

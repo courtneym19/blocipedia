@@ -15,9 +15,14 @@
    </div>
 
    <div class="col-md-4" id="collab-column">
-     <h4>Collaborators</h4>
-        <% @wiki.users.each do |user| %>
-          <p><%= user.email %>
-        <% end %>
+     <% if current_user.admin? || current_user.premium? || @wiki.collaborators.include?(current_user) %>
+       <h4>Collaborators</h4>
+         <% @wiki.collaborators.each do |collaborator| %>
+           <div class="col-md-8">
+             5
+             <%= collaborator %>
+           </div>
+         <% end %>
+     <% end %>
    </div>
  </div>

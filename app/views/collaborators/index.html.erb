@@ -4,13 +4,12 @@
 </div>
 
 <div class="row">
-   <div class="col-md-8">
+  <div class="col-md-8">
     <% @users.each do |user| %>
-    <h4 class="media-heading">
-      <%= user.email %>
+      <h4 class="media-heading">
+        <%= user.email %>
       </h4>
-      <% if @wiki.collaborators.include?(user) %>
-        <% collaborator = @wiki.collaborator_for(user) %>
+      <% if @wiki.users.include?(user) %>
         <br />
         <%= link_to "Remove collaborator", [@wiki, collaborator], method: :delete, class: "btn btn-danger" %>
       <br />
