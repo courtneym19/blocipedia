@@ -7,19 +7,23 @@
      <p>
       <%= markdown(@wiki.body) %>
     </p>
+    <% if current_user.admin? || @wiki.user == current_user || @wiki.users.include?(current_user) %>
      <%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success' %>
+     <% end %>
+    <% if current_user.admin? || @wiki.user == current_user %>
      <%= link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this wiki?'} %>
+    <% end %>
    </div>
    <div class="col-md-8">
      <%= link_to "Return to Wikis Home", wikis_path, class: "return" %>
    </div>
 
    <div class="col-md-4" id="collab-column">
-     <% if current_user.admin? || current_user.premium? || @wiki.collaborators.include?(current_user) %>
+     <% if current_user.admin? || (@wiki.user == current_user && current_user.premium?) || @wiki.users.include?(current_user) %>
        <h4>Collaborators</h4>
          <% @wiki.collaborators.each do |collaborator| %>
            <div class="col-md-8">
-             <%= collaborator.user_id %>
+             <%= User.find_by_id(collaborator.user_id).email %>
            </div>
          <% end %>
      <% end %>

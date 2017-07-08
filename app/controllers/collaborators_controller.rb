@@ -3,6 +3,7 @@ class CollaboratorsController < ApplicationController
 
     def index
       @users = User.all
+      @collaborators = Collaborator.all
     end
 
     def new
@@ -10,12 +11,11 @@ class CollaboratorsController < ApplicationController
     end
 
     def create
-      #@user = User.where(email: params[:email]).take
+      @user = User.find(params[:user_id])
       @collaborator = Collaborator.new(wiki_id: @wiki.id, user_id: params[:user_id])
 
       if @collaborator.save
-        flash[:notice] = "Collaborator added."
-
+          flash[:notice] = "Collaborator added."
       else
         flash[:alert] = "There was an error adding the collaborator."
       end
@@ -32,7 +32,7 @@ class CollaboratorsController < ApplicationController
     def destroy
       @collaborator = Collaborator.find(params[:id])
 
-      if collaborator.destroy
+      if @collaborator.destroy
         flash[:notice] = "Collaborator successfully deleted."
         redirect_to @wiki
       else

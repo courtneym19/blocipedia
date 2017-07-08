@@ -4,20 +4,18 @@
 </div>
 
 <div class="row">
-  <div class="col-md-8">
-    <% @users.each do |user| %>
-      <h4 class="media-heading">
-        <%= user.email %>
-      </h4>
-      <% if @wiki.collaborators.include?(user) %>
-        <br />
-        <%= link_to "Remove collaborator", [@wiki, collaborator], method: :delete, class: "btn btn-danger" %>
-      <br />
-      <% else %>
-        <%= link_to "Add collaborator", wiki_collaborators_path(@wiki, user_id: user.id), method: :post, class: "btn btn-success" %>
-     <br />
+
+  <div class="col-md-4" id="col-1">
+      <h4><strong>Add/Remove Collaborators</strong></h4>
+      <% @users.each do |user| %>
+          <h4 class="media-heading">
+              <%= user.email %>
+          </h4>
+          <% unless @wiki.users.include?(user) %>
+            <%= link_to "Add collaborator", wiki_collaborators_path(@wiki, user_id: user.id), method: :post, class: "btn btn-success" %>
+          <% else %>
+            <%= link_to "Delete Collaborator", [@wiki, @collaborator], class: 'btn btn-danger delete', method: :delete %>
+          <% end %>
+       <br />
       <% end %>
-      <br />
-    <% end %>
   </div>
-</div>
